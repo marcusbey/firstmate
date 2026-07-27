@@ -116,6 +116,10 @@ test_no_mistakes_dod_wording() {
     "no-mistakes DOD must render literal backticks around help"
   assert_no_grep "no-mistakes' own guidance" "$brief" \
     "no-mistakes DOD regressed to the apostrophe form that breaks bash -n"
+  assert_grep "bypass the firstmate authority check and any required captain escalation" "$brief" \
+    "no-mistakes DOD lost the firstmate authority-check meaning"
+  assert_no_grep "firstmate's authority check" "$brief" \
+    "no-mistakes DOD regressed to the authority-check apostrophe that breaks bash -n"
   pass "fm-brief.sh: no-mistakes DOD wording avoids the apostrophe regression"
 }
 
